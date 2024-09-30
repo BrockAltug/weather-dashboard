@@ -61,4 +61,4 @@ Weather Dashboard is a web-based application that offers a clean and intuitive i
 
 ## Summary
 
-Weather Dashboard is a simple yet powerful web application for checking real-time weather and forecasts for cities worldwide. It uses the OpenWeather API to deliver accurate data and stores the user’s search history for easy reference. With a responsive and user-friendly design, it makes it easy to stay informed about current and upcoming weather conditions. A dynamic weather dashboard that allows users to search for cities and view current weather conditions and a 5-day forecast using the OpenWeatherMap API
+Weather Dashboard is a simple yet powerful web application for checking real-time weather and forecasts for cities worldwide. It uses the OpenWeather API to deliver accurate data and stores the user’s search history for easy reference. With a responsive and user-friendly design, it makes it easy to stay informed about current and upcoming weather conditions. A dynamic weather dashboard that allows users to search for cities and view current weather conditions and a 5-day forecast using the OpenWeatherMap API.
