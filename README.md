@@ -12,10 +12,6 @@ A dynamic and interactive weather dashboard designed to provide users with curre
 - [Future Improvements](#future-improvements)
 - [Summary](#summary)
 
-![Weather Dashboard Screenshot](./assets/images/screenshot.png)
-
-[Demo](https://brockaltug.github.io/weather-dashboard/)
-
 ## Overview
 
 Weather Dashboard is a web-based application that offers a clean and intuitive interface for checking the current weather and 5-day forecast for any city. It allows users to input a city name, view the current weather conditions such as temperature, wind speed, and humidity, and access a detailed 5-day forecast. Users can view their past search history, and the app dynamically updates with each search, ensuring that weather data remains accurate and up to date.
