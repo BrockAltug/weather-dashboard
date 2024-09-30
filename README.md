@@ -12,7 +12,7 @@ A dynamic and interactive weather dashboard designed to provide users with curre
 - [Future Improvements](#future-improvements)
 - [Summary](#summary)
 
-![Weather Dashboard Screenshot](./assets/images/screenshot.png)
+![Weather Dashboard Screenshot](./assets/images/ss.png)
 
 [Demo](https://brockaltug.github.io/weather-dashboard/)
 
