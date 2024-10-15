@@ -20,7 +20,7 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 600;
-    width: 100%;
+    max-width: 1000px; /* Restrict max width */
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
@@ -29,64 +29,27 @@ h1 {
     border-bottom: none; /* Remove the separating line */
 }
 
-/* Dynamic background change for the h1 based on hovered weather */
-.forecast-item:hover ~ h1,
-#current-weather:hover ~ h1 {
-    background: var(--dynamic-background, linear-gradient(135deg, #8EC5FC, #E0C3FC)); /* Default gradient */
-    color: #ffffff; /* Ensure text stays readable on different backgrounds */
-}
-
-/* Additional hover styling for weather conditions */
-#current-weather:hover[data-weather="clear"] ~ h1,
-.forecast-item:hover[data-weather="clear"] ~ h1 {
-    background: linear-gradient(135deg, #8EC5FC, #E0C3FC); /* Clear Sky */
-}
-
-#current-weather:hover[data-weather="clouds"] ~ h1,
-.forecast-item:hover[data-weather="clouds"] ~ h1 {
-    background: linear-gradient(135deg, #B0BEC5, #78909C); /* Cloudy */
-}
-
-#current-weather:hover[data-weather="rain"] ~ h1,
-.forecast-item:hover[data-weather="rain"] ~ h1 {
-    background: linear-gradient(135deg, #74EBD5, #ACB6E5); /* Rain */
-}
-
-#current-weather:hover[data-weather="snow"] ~ h1,
-.forecast-item:hover[data-weather="snow"] ~ h1 {
-    background: linear-gradient(135deg, #ECE9E6, #FFFFFF); /* Snow */
-}
-
-#current-weather:hover[data-weather="thunderstorm"] ~ h1,
-.forecast-item:hover[data-weather="thunderstorm"] ~ h1 {
-    background: linear-gradient(135deg, #141E30, #243B55); /* Thunderstorm */
-}
-
-#current-weather:hover[data-weather="mist"] ~ h1,
-.forecast-item:hover[data-weather="mist"] ~ h1 {
-    background: linear-gradient(135deg, #D3D3D3, #ECECEC); /* Mist/Fog */
-}
-
-/* Container adjustments */
+/* Center the entire content inside the body */
 .container {
     display: flex;
-    justify-content: center; /* Center the container */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* Max width for the container */
     padding: 20px;
-    gap: 20px;
 }
 
 /* Search container */
 #search-container {
-    width: 30%; /* Increased width for centering */
+    width: 100%;
+    max-width: 400px; /* Set a max-width to center the search box */
     background-color: #ffffff;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
-    margin: 0 auto; /* Center the search container */
+    margin-bottom: 20px;
 }
 
 #city-input {
@@ -117,6 +80,8 @@ h1 {
 
 #search-history {
     margin-top: 20px;
+    width: 100%;
+    max-width: 400px; /* Ensure the search history aligns with search container */
 }
 
 #search-history button {
@@ -153,7 +118,8 @@ button[type="button"]:hover, button[type="submit"]:hover {
 
 /* Weather info container */
 #weather-info {
-    width: 70%;
+    width: 100%;
+    max-width: 800px; /* Set max-width to center weather info */
 }
 
 #current-weather {
