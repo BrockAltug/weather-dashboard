@@ -99,18 +99,60 @@ function fetchForecast(lat, lon) {
 
 // display 5-day forecast
 function displayForecast(data) {
-    forecastDiv.innerHTML = `<h2>5-Day Forecast</h2>`;
-    for (let i = 0; i < data.list.length; i += 8) { // take data every 8 intervals (24 hours)
+    forecastDiv.innerHTML = ''; // Clear previous forecasts
+    for (let i = 0; i < data.list.length; i += 8) { // Take data every 8 intervals (24 hours)
         const day = data.list[i];
-        forecastDiv.innerHTML += `
-            <div class="forecast-item">
-                <p>Date: ${new Date(day.dt_txt).toLocaleDateString()}</p>
-                <p>Temperature: ${day.main.temp}°F</p>
-                <p>Wind Speed: ${day.wind.speed} MPH</p>
-                <p>Humidity: ${day.main.humidity}%</p>
-                <img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" alt="Weather icon">
-            </div>
+        const weatherCondition = day.weather[0].main.toLowerCase(); // Get the main weather condition
+        const forecastItem = document.createElement('div');
+        forecastItem.classList.add('forecast-item');
+
+        forecastItem.innerHTML = `
+            <p>Date: ${new Date(day.dt_txt).toLocaleDateString()}</p>
+            <p>Temperature: ${day.main.temp}°F</p>
+            <p>Wind Speed: ${day.wind.speed} MPH</p>
+            <p>Humidity: ${day.main.humidity}%</p>
+            <img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" alt="Weather icon">
         `;
+
+        forecastItem.addEventListener('mouseover', function() {
+            updateBodyBackground(weatherCondition); // Change body background based on the weather condition
+        });
+
+        forecastItem.addEventListener('mouseleave', function() {
+            updateBodyBackground('default'); // Revert to the default background
+        });
+
+        forecastDiv.appendChild(forecastItem);
+    }
+}
+
+// Function to update the body's background based on weather condition
+function updateBodyBackground(weatherCondition) {
+    document.body.className = ''; // Reset any existing class
+    switch (weatherCondition) {
+        case 'clear':
+            document.body.style.background = 'linear-gradient(135deg, #8EC5FC, #E0C3FC)'; // Clear sky gradient
+            break;
+        case 'clouds':
+            document.body.style.background = 'linear-gradient(135deg, #B0BEC5, #78909C)'; // Cloudy gradient
+            break;
+        case 'rain':
+        case 'drizzle':
+            document.body.style.background = 'linear-gradient(135deg, #74EBD5, #ACB6E5)'; // Rainy gradient
+            break;
+        case 'snow':
+            document.body.style.background = 'linear-gradient(135deg, #ECE9E6, #FFFFFF)'; // Snowy gradient
+            break;
+        case 'thunderstorm':
+            document.body.style.background = 'linear-gradient(135deg, #141E30, #243B55)'; // Thunderstorm gradient
+            break;
+        case 'mist':
+        case 'fog':
+            document.body.style.background = 'linear-gradient(135deg, #D3D3D3, #ECECEC)'; // Mist/Fog gradient
+            break;
+        default:
+            document.body.style.background = 'linear-gradient(135deg, #f4f4f4, #eaeaea)'; // Default gradient
+            break;
     }
 }
 
