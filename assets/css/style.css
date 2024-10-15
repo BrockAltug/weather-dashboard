@@ -1,12 +1,16 @@
+/* Add a modern and appealing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9f9f9;
+    background-attachment: fixed; /* Fix the background so it doesn’t scroll */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Ensure it covers the full height */
     transition: background-color 0.5s ease-in-out;
 }
 
@@ -14,17 +18,59 @@ h1 {
     margin: 0;
     padding: 20px;
     text-align: center;
-    color: #333;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 600;
     width: 100%;
-    background-color: #f5f5f5;
-    border-bottom: 2px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
+    color: #000; /* Solid black text color for better readability */
+    background-image: linear-gradient(135deg, #fff, #fff); /* Initial gradient */
+    border-bottom: none; /* Remove the separating line */
 }
 
+/* Dynamic background change for the h1 based on hovered weather */
+.forecast-item:hover ~ h1,
+#current-weather:hover ~ h1 {
+    background: var(--dynamic-background, linear-gradient(135deg, #8EC5FC, #E0C3FC)); /* Default gradient */
+    color: #ffffff; /* Ensure text stays readable on different backgrounds */
+}
+
+/* Additional hover styling for weather conditions */
+#current-weather:hover[data-weather="clear"] ~ h1,
+.forecast-item:hover[data-weather="clear"] ~ h1 {
+    background: linear-gradient(135deg, #8EC5FC, #E0C3FC); /* Clear Sky */
+}
+
+#current-weather:hover[data-weather="clouds"] ~ h1,
+.forecast-item:hover[data-weather="clouds"] ~ h1 {
+    background: linear-gradient(135deg, #B0BEC5, #78909C); /* Cloudy */
+}
+
+#current-weather:hover[data-weather="rain"] ~ h1,
+.forecast-item:hover[data-weather="rain"] ~ h1 {
+    background: linear-gradient(135deg, #74EBD5, #ACB6E5); /* Rain */
+}
+
+#current-weather:hover[data-weather="snow"] ~ h1,
+.forecast-item:hover[data-weather="snow"] ~ h1 {
+    background: linear-gradient(135deg, #ECE9E6, #FFFFFF); /* Snow */
+}
+
+#current-weather:hover[data-weather="thunderstorm"] ~ h1,
+.forecast-item:hover[data-weather="thunderstorm"] ~ h1 {
+    background: linear-gradient(135deg, #141E30, #243B55); /* Thunderstorm */
+}
+
+#current-weather:hover[data-weather="mist"] ~ h1,
+.forecast-item:hover[data-weather="mist"] ~ h1 {
+    background: linear-gradient(135deg, #D3D3D3, #ECECEC); /* Mist/Fog */
+}
+
+/* Container adjustments */
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the container */
     width: 100%;
     max-width: 1200px;
     padding: 20px;
@@ -33,29 +79,40 @@ h1 {
 
 /* Search container */
 #search-container {
-    width: 25%;
+    width: 30%; /* Increased width for centering */
     background-color: #ffffff;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
+    margin: 0 auto; /* Center the search container */
 }
 
 #city-input {
-    width: calc(100% - 24px); /* To fit inside the container without exceeding */
+    width: 100%;
     padding: 12px;
-    margin: 10px auto; /* Center the input inside the container */
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #f7f7f7;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    display: block;
+    box-sizing: border-box;
 }
 
+/* Button container */
 .button-container {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    flex: 1;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
 }
 
 #search-history {
@@ -107,6 +164,15 @@ button[type="button"]:hover, button[type="submit"]:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.5s ease, background-color 0.3s ease;
+}
+
+#current-weather:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0; /* Grey hover effect */
+    transition: background-color 0.3s ease, transform 0.5s ease;
 }
 
 #current-weather h2 {
@@ -124,7 +190,7 @@ button[type="button"]:hover, button[type="submit"]:hover {
 /* 5-day forecast */
 #forecast {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center forecast cards */
     gap: 15px;
     flex-wrap: wrap;
 }
@@ -135,7 +201,7 @@ button[type="button"]:hover, button[type="submit"]:hover {
     border-radius: 10px;
     padding: 15px;
     text-align: center;
-    flex: 1;
+    flex-basis: 180px; /* Ensure same width for all forecast cards */
     max-width: 180px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: transform 0.5s ease, background-color 0.3s ease;
@@ -144,7 +210,7 @@ button[type="button"]:hover, button[type="submit"]:hover {
 
 .forecast-item:hover {
     transform: scale(1.05);
-    background-color: #f5f5f5;
+    background-color: #e0e0e0; /* Grey hover effect */
 }
 
 .forecast-item p {
@@ -158,4 +224,49 @@ button[type="button"]:hover, button[type="submit"]:hover {
     color: #333;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .button-container button {
+        margin-top: 10px;
+    }
+
+    #current-weather {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    #forecast {
+        justify-content: center; /* Center forecast cards on mobile */
+    }
+
+    .forecast-item {
+        max-width: 100%;
+        flex: none;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #search-container, #weather-info {
+        width: 100%;
+    }
+
+    #city-input {
+        width: calc(100% - 24px);
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
