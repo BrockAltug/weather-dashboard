@@ -1,4 +1,7 @@
-const apiKey = 'f14a51468bf238f2fda7fa02919b143a'; // OpenWeather API key
+require('dotenv').config();
+
+// Access the API key
+const apiKey = process.env.API_KEY;
 const cityForm = document.getElementById('city-form');
 const cityInput = document.getElementById('city-input');
 const searchHistoryDiv = document.getElementById('search-history');
