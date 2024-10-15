@@ -12,6 +12,7 @@ body {
     align-items: center;
     min-height: 100vh; /* Ensure it covers the full height */
     transition: background-color 0.5s ease-in-out;
+    width: 100%; /* Ensures body takes full screen width */
 }
 
 h1 {
@@ -20,7 +21,7 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 600;
-    max-width: 1000px; /* Restrict max width */
+    width: 100%; /* Make h1 take the full width of the body */
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
